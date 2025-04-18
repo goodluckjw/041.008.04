@@ -39,6 +39,8 @@ def fetch_law_list_and_detail(query, unit):
         detail = law.findtext("법령상세링크", "").strip()
         full_link = BASE + detail
         xml_data = fetch_law_xml_by_mst(mst)
+        print(f"[DEBUG] ▶ {name} XML 본문 길이: {len(xml_data) if xml_data else 'None'}")
+
         if xml_data:
             articles = parse_law_xml(xml_data, terms, unit)
             if articles:
